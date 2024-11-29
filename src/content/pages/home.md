@@ -1,7 +1,11 @@
 ---
 heroTitle: Power Women to Invest with Confidence
 heroSubtitle: Learn, grow, and build wealth through smart investment strategies
-heroDescription: Discover the tools and support you need to succeed in your investment journey
+heroDescription: |-
+  Hero decription: Format: WebP or JPEG
+  Resolution: 1920x1080px
+  File size: Optimized to around 200-300KB
+  Quality: 80-85% for JPEG/WebP
 heroPrimaryCTA: Start Your Journey
 heroSecondaryCTA: Learn More
 heroBackgroundImage: /images/hero-bg.jpg
@@ -21,11 +25,11 @@ features:
     icon: 👥
 galleryTitle: Our Community in Action
 galleryImages:
-  - image: /images/community-1.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Workshop session with community members
-  - image: /images/community-2.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Online investment seminar
-  - image: /images/community-3.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Community networking event
 benefitsTitle: Why Choose Us
 benefits:
