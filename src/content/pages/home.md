@@ -25,11 +25,11 @@ features:
     icon: 👥
 galleryTitle: Our Community in Action
 galleryImages:
-  - image: /images/community-1.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Workshop session with community members
-  - image: /images/community-2.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Online investment seminar
-  - image: /images/community-3.jpg
+  - image: /images/uploads/headline-feminism-800x373.jpeg
     alt: Community networking event
 benefitsTitle: Why Choose Us
 benefits:
