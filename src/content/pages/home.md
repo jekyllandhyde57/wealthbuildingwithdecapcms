@@ -1,5 +1,5 @@
 ---
-heroTitle: Powering Women to Invest with Confidence
+heroTitle: Power Women to Invest with Confidence
 heroSubtitle: Learn, grow, and build wealth through smart investment strategies
 heroDescription: Discover the tools and support you need to succeed in your investment journey
 heroPrimaryCTA: Start Your Journey
