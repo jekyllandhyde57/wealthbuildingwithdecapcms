@@ -1,0 +1,80 @@
+---
+interface Props {
+  content: {
+    companyDescription: string;
+    footerLinks: {
+      company: Array<{
+        label: string;
+        url: string;
+      }>;
+      resources: Array<{
+        label: string;
+        url: string;
+      }>;
+      legal: Array<{
+        label: string;
+        url: string;
+      }>;
+    };
+  };
+}
+
+const { content } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#D5B39A] text-gray-800">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <h4 class="text-3xl font-cormorant-bold">InvestWithSonia</h4>
+        <p class="text-xl text-gray-700">
+          {content.companyDescription}
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-2xl font-cormorant-bold mb-4">Company</h4>
+        <ul class="space-y-3">
+          {content.footerLinks.company.map(link => (
+            <li>
+              <a href={link.url} class="text-xl text-gray-700 hover:text-gray-900 transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-2xl font-cormorant-bold mb-4">Resources</h4>
+        <ul class="space-y-3">
+          {content.footerLinks.resources.map(link => (
+            <li>
+              <a href={link.url} class="text-xl text-gray-700 hover:text-gray-900 transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-2xl font-cormorant-bold mb-4">Legal</h4>
+        <ul class="space-y-3">
+          {content.footerLinks.legal.map(link => (
+            <li>
+              <a href={link.url} class="text-xl text-gray-700 hover:text-gray-900 transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-600/20 mt-8 pt-8 text-center">
+      <p class="text-xl text-gray-700">&copy; {currentYear} InvestWithSonia. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

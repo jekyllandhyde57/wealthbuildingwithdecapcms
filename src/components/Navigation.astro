@@ -1,0 +1,108 @@
+---
+interface Props {
+  menu: {
+    logoText: string;
+    items: Array<{
+      label: string;
+      url: string;
+      isButton: boolean;
+    }>;
+  };
+}
+
+const { menu } = Astro.props;
+---
+
+<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+  <nav class="container mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img 
+        src="/images/logo.svg" 
+        alt={menu.logoText}
+        class="h-10 w-auto"
+        width="40"
+        height="40"
+      />
+      <span class="text-[#3c4a41] text-3xl font-cormorant-bold">{menu.logoText}</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex items-center gap-8">
+      {menu.items.map(item => (
+        <li>
+          <a 
+            href={item.url}
+            class={`
+              text-lg font-cormorant-bold tracking-wide transition-colors
+              ${item.isButton 
+                ? 'text-[#3c4a41] border-2 border-[#3c4a41] px-4 py-2 rounded-lg hover:bg-[#3c4a41] hover:text-white'
+                : 'text-gray-800 hover:text-[#3c4a41]'
+              }
+            `}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="md:hidden p-2"
+      aria-label="Toggle menu"
+      id="menuButton"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div 
+    id="mobileMenu" 
+    class="fixed inset-x-0 bg-white shadow-lg -translate-y-full transition-transform duration-300 md:hidden"
+    style="top: 64px;"
+  >
+    <nav class="container mx-auto px-4 py-4">
+      <ul class="flex flex-col gap-2">
+        {menu.items.map(item => (
+          <li>
+            <a 
+              href={item.url}
+              class={`
+                block py-2 px-4 text-lg font-cormorant-bold tracking-wide rounded-lg transition-colors
+                ${item.isButton 
+                  ? 'text-[#3c4a41] border-2 border-[#3c4a41] hover:bg-[#3c4a41] hover:text-white'
+                  : 'text-gray-800 hover:bg-gray-50 hover:text-[#3c4a41]'
+                }
+              `}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let isOpen = false;
+
+  menuButton?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (mobileMenu) {
+      mobileMenu.style.transform = isOpen ? 'translateY(0)' : 'translateY(-100%)';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && mobileMenu) {
+      mobileMenu.style.transform = 'translateY(-100%)';
+      isOpen = false;
+    }
+  });
+</script>

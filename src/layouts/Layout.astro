@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Learn to invest with confidence. Join our community of women investors and get expert guidance on your financial journey." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Include Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      /* Custom CSS for consistent font application */
+      body {
+        font-family: 'Cormorant Garamond', serif;
+      }
+      h1, h2, h3, h4, h5, h6, .font-bold {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <slot />
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

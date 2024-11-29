@@ -1,0 +1,144 @@
+backend:
+  name: git-gateway
+  branch: main
+  auth_scope: repo # Required for private repositories
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: '[skip ci] Upload "{{path}}"'
+    deleteMedia: '[skip ci] Delete "{{path}}"'
+
+# Enable local backend in development
+local_backend: true
+
+# Media and public folders
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Enable editorial workflow
+publish_mode: editorial_workflow
+
+# Collections
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "src/content/pages/home.md"
+        fields:
+          # Hero Section
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string"}
+          - {label: "Hero Description", name: "heroDescription", widget: "text"}
+          - {label: "Hero Primary CTA Text", name: "heroPrimaryCTA", widget: "string"}
+          - {label: "Hero Secondary CTA Text", name: "heroSecondaryCTA", widget: "string"}
+          - {label: "Hero Background Image", name: "heroBackgroundImage", widget: "image"}
+          
+          # Features Section
+          - {label: "Features Section Title", name: "featuresTitle", widget: "string"}
+          - label: "Features"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Icon", name: "icon", widget: "string"}
+
+          # Gallery Section
+          - {label: "Gallery Section Title", name: "galleryTitle", widget: "string"}
+          - label: "Gallery Images"
+            name: "galleryImages"
+            widget: "list"
+            fields:
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Alt Text", name: "alt", widget: "string"}
+
+          # Benefits Section
+          - {label: "Benefits Section Title", name: "benefitsTitle", widget: "string"}
+          - label: "Benefits"
+            name: "benefits"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+          # Testimonials Section
+          - {label: "Testimonials Section Title", name: "testimonialsTitle", widget: "string"}
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Content", name: "content", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+
+          # Call to Action Section
+          - {label: "CTA Title", name: "ctaTitle", widget: "string"}
+          - {label: "CTA Description", name: "ctaDescription", widget: "text"}
+          - {label: "Primary Button Text", name: "ctaPrimaryButton", widget: "string"}
+          - {label: "Secondary Button Text", name: "ctaSecondaryButton", widget: "string"}
+
+          # Newsletter Section
+          - {label: "Newsletter Title", name: "newsletterTitle", widget: "string"}
+          - {label: "Newsletter Description", name: "newsletterDescription", widget: "text"}
+          - {label: "Newsletter Button Text", name: "newsletterButtonText", widget: "string"}
+          - {label: "Newsletter Privacy Text", name: "newsletterPrivacyText", widget: "string"}
+
+          # Contact Section
+          - {label: "Contact Title", name: "contactTitle", widget: "string"}
+          - label: "Contact Information"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Phone", name: "phone", widget: "string"}
+              - {label: "Address", name: "address", widget: "text"}
+              - {label: "Form Submit Button Text", name: "submitButtonText", widget: "string"}
+
+          # Footer
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Company Description", name: "companyDescription", widget: "text"}
+              - label: "Footer Links"
+                name: "footerLinks"
+                widget: "object"
+                fields:
+                  - label: "Company Links"
+                    name: "company"
+                    widget: "list"
+                    fields:
+                      - {label: "Label", name: "label", widget: "string"}
+                      - {label: "URL", name: "url", widget: "string"}
+                  - label: "Resources Links"
+                    name: "resources"
+                    widget: "list"
+                    fields:
+                      - {label: "Label", name: "label", widget: "string"}
+                      - {label: "URL", name: "url", widget: "string"}
+                  - label: "Legal Links"
+                    name: "legal"
+                    widget: "list"
+                    fields:
+                      - {label: "Label", name: "label", widget: "string"}
+                      - {label: "URL", name: "url", widget: "string"}
+
+  - name: "navigation"
+    label: "Navigation"
+    files:
+      - name: "navbar"
+        label: "Navigation Menu"
+        file: "src/content/navigation/menu.md"
+        fields:
+          - {label: "Logo Text", name: "logoText", widget: "string"}
+          - label: "Menu Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Is Button", name: "isButton", widget: "boolean", default: false}

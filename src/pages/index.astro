@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Gallery from '../components/Gallery.astro';
+import Benefits from '../components/Benefits.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CallToAction from '../components/CallToAction.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
+
+const homeContent = await getEntry('pages', 'home');
+const navigationContent = await getEntry('navigation', 'menu');
+---
+
+<Layout title="Invest With Sonia - Financial Education for Women">
+  <Navigation menu={navigationContent.data} />
+  <Hero 
+    title={homeContent.data.heroTitle}
+    subtitle={homeContent.data.heroSubtitle}
+    description={homeContent.data.heroDescription}
+    primaryCTA={homeContent.data.heroPrimaryCTA}
+    secondaryCTA={homeContent.data.heroSecondaryCTA}
+    backgroundImage={homeContent.data.heroBackgroundImage}
+  />
+  <Features 
+    title={homeContent.data.featuresTitle}
+    features={homeContent.data.features}
+  />
+  <Gallery 
+    title={homeContent.data.galleryTitle}
+    images={homeContent.data.galleryImages}
+  />
+  <Benefits 
+    title={homeContent.data.benefitsTitle}
+    benefits={homeContent.data.benefits}
+  />
+  <Testimonials 
+    title={homeContent.data.testimonialsTitle}
+    testimonials={homeContent.data.testimonials}
+  />
+  <CallToAction 
+    title={homeContent.data.ctaTitle}
+    description={homeContent.data.ctaDescription}
+    primaryButton={homeContent.data.ctaPrimaryButton}
+    secondaryButton={homeContent.data.ctaSecondaryButton}
+  />
+  <NewsletterSignup 
+    title={homeContent.data.newsletterTitle}
+    description={homeContent.data.newsletterDescription}
+    buttonText={homeContent.data.newsletterButtonText}
+    privacyText={homeContent.data.newsletterPrivacyText}
+  />
+  <Contact 
+    title={homeContent.data.contactTitle}
+    contact={homeContent.data.contact}
+  />
+  <Footer content={homeContent.data.footer} />
+</Layout>
